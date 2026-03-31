@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+
+const sortedProjects = [...projects].sort(
+  (a, b) =>
+    (a.data.order ?? Number.MAX_SAFE_INTEGER) -
+      (b.data.order ?? Number.MAX_SAFE_INTEGER) ||
+    a.data.title.localeCompare(b.data.title),
+);
+---
+
+<h1>Archive</h1>
+
+<div class="grid">
+  {
+    sortedProjects.map((i) => (
+      <article class="card">
+        <h2>{i.data.title}</h2>
+        <p>{i.data.summary}</p>
+        {i.data.tags.length > 0 && (
+          <ul>
+            {i.data.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        )}
+      </article>
+    ))
+  }
+</div>

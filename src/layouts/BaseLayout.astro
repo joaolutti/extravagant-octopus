@@ -1,0 +1,18 @@
+---
+import "../styles/globals.css";
+import GlobalStyles from "../components/GlobalStyles.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>joão lutti</title>
+  </head>
+  <body>
+    <GlobalStyles />
+    <slot />
+  </body>
+</html>
