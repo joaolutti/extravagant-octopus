@@ -1,6 +1,9 @@
 ---
 import "../styles/globals.css";
-import GlobalStyles from "../components/GlobalStyles.astro";
+import Footer from "../components/Footer.astro";
+
+const { title = "joão lutti", description = "Personal portfolio" } =
+  Astro.props;
 ---
 
 <!doctype html>
@@ -9,10 +12,16 @@ import GlobalStyles from "../components/GlobalStyles.astro";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>joão lutti</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
   </head>
   <body>
-    <GlobalStyles />
-    <slot />
+    <div class="page-shell">
+      <main class="container">
+        <slot />
+      </main>
+      <!-- footer here -->
+      <Footer />
+    </div>
   </body>
 </html>
