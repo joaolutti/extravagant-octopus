@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
+import Layout from "../../layouts/BaseLayout.astro";
 
 const sortedProjects = [...projects].sort(
   (a, b) =>
@@ -11,22 +12,4 @@ const sortedProjects = [...projects].sort(
 );
 ---
 
-<h1>Archive</h1>
-
-<div class="grid">
-  {
-    sortedProjects.map((i) => (
-      <article class="card">
-        <h2>{i.data.title}</h2>
-        <p>{i.data.summary}</p>
-        {i.data.tags.length > 0 && (
-          <ul>
-            {i.data.tags.map((tag) => (
-              <li>{tag}</li>
-            ))}
-          </ul>
-        )}
-      </article>
-    ))
-  }
-</div>
+<Layout />

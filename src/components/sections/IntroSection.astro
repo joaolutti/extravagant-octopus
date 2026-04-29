@@ -1,0 +1,92 @@
+---
+import avatar from "../../../src/assets/images/avatar-1.png";
+
+const intro = {
+  name: "João Lutti",
+  role: "software engineer",
+  paragraphs: [
+    "I'm a software engineer, passionate about building quality software.",
+    "I love building ideas that not only work, but feel great to use, blending logic with a dash of creativity",
+    "Recent graduate from the University of Calgary, having lived previously in Shenzhen.",
+  ],
+};
+---
+
+<section class="intro">
+  <div class="intro__header">
+    <div class="intro__heading">
+      <div class="intro__title">
+        <h1>{intro.name}</h1>
+        <span class="intro__badge">
+          <span class="typing" data-text={intro.role}></span><span
+            class="intro__underline">_</span
+          >
+        </span>
+
+        <script>
+          document.querySelectorAll<HTMLElement>(".typing").forEach((char) => {
+            const text = char.dataset.text ?? "";
+
+            let i = 0;
+            const type = () => {
+              if (i < text.length) {
+                char.textContent += text[i];
+                i++;
+                setTimeout(type, 100);
+              }
+            };
+            type();
+          });
+        </script>
+      </div>
+    </div>
+
+    <img src={avatar.src} alt="" />
+  </div>
+  <div class="intro__body">
+    {intro.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</section>
+
+<style>
+  .intro {
+    display: grid;
+  }
+
+  .intro__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 16px;
+  }
+
+  .intro__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .intro__badge {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 5px;
+  }
+
+  .intro__underline {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+  }
+
+  .intro__body {
+    max-width: 40%;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
