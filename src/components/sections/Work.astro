@@ -1,0 +1,70 @@
+---
+const paragraphs = [
+  [
+    { type: "text", value: "Currently I'm a full-stack developer at " },
+    { type: "link", value: "Predialize", href: "link to website" },
+    {
+      type: "text",
+      value:
+        ". Working on building and shipping production-ready web applications.",
+    },
+  ],
+  [
+    {
+      type: "text",
+      value: "For more details, you can find the latest version of my resume ",
+    },
+    { type: "link", value: "here", href: "link to resume" },
+    { type: "text", value: "." },
+  ],
+];
+---
+
+<section class="work">
+  <div class="section__title">
+    <h1>work<span class="section__underline">_</span></h1>
+  </div>
+
+  <div class="body">
+    {
+      paragraphs.map((paragraph) => (
+        <p>
+          {paragraph.map((part) => {
+            if (part.type === "link") {
+              return <a href={part.href}>{part.value}</a>;
+            }
+            return part.value;
+          })}
+        </p>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .work {
+    margin-top: 50px;
+  }
+  .section__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section__underline {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .body {
+    max-width: 40%;
+  }
+</style>

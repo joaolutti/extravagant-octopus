@@ -44,6 +44,7 @@ html {
   /* what */
   width: min(100% - (var(--page-padding) * 2), var(--content-max-width));
   margin-inline: auto;
+  padding-top: 100px;
 }
 
 h1 {

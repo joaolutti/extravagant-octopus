@@ -1,0 +1,18 @@
+---
+import type { ContentPart } from "../types/types";
+
+type Props = {
+  content: ContentPart[];
+};
+
+const { content } = Astro.props as Props;
+---
+
+{
+  content.map((part) => {
+    if (part.type === "link") {
+      return <a href={part.href}>{part.value}</a>;
+    }
+    return part.value;
+  })
+}

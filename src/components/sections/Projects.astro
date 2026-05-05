@@ -1,0 +1,38 @@
+---
+import InlineContent from "../InlineContent.astro";
+import type { ProjectsData } from "../../types/types";
+
+const projects: ProjectsData = {
+  paragraphs: [
+    [
+      {
+        type: "text",
+        value:
+          "A selection of projects I've built during my studies and in my spare time.",
+      },
+    ],
+    [
+      { type: "text", value: "A broader archive of my work is available " },
+      { type: "link", value: "here", href: "" },
+      { type: "text", value: "." },
+    ],
+  ],
+  bulletPoints: [],
+};
+---
+
+<section class="projects">
+  <div class="section__title">
+    <h1>projects<span class="section__underline">_</span></h1>
+  </div>
+
+  <div class="body">
+    {
+      projects.paragraphs.map((paragraph) => (
+        <p>
+          <InlineContent content={paragraph} />
+        </p>
+      ))
+    }
+  </div>
+</section>
